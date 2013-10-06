@@ -18,6 +18,9 @@
   <delegateAnalysisEngine key="AnswerScoreAnnotatorDescriptor">
       <import location="/Users/yingsheng/git/hw2-yingshen/hw2-yingshen-ziy-proto/src/main/resources/descriptors/AnswerScoreAnnotatorDescriptor.xml"/>
     </delegateAnalysisEngine>
+  <delegateAnalysisEngine key="evaluatorDescriptor">
+      <import name=".Users.yingsheng.git.hw3-yingshen.hw3-yingshen-ziy-proto.src.main.resources.descriptors.evaluatorDescriptor"/>
+    </delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>
     <name>hw2-yingshen-aae</name>
@@ -33,6 +36,7 @@
       <node>TokenAnnotatorDescriptor</node>
       <node>NGramAnnotatorDescriptor</node>
       <node>AnswerScoreAnnotatorDescriptor</node>
+      <node>evaluatorDescriptor</node>
       </fixedFlow>
     </flowConstraints>
     <fsIndexCollection/>
