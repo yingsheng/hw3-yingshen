@@ -10,6 +10,10 @@ import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.JFSIndexRepository;
+import org.apache.uima.jcas.cas.TOP;
+import org.cleartk.ne.type.NamedEntity;
+import org.cleartk.ne.type.NamedEntityMention;
 
 import edu.cmu.deiis.types.*;
 
@@ -103,6 +107,76 @@ public class AnswerScoreAnnotator extends JCasAnnotator_ImplBase {
       }
     }
     
+    //add the stanford NLP
+    
+    /*
+    JFSIndexRepository repo = aJCas.getJFSIndexRepository();
+    //ArrayList<String> QentityID=new ArrayList<String>();
+    FSIterator<TOP> NEiter = repo.getAllIndexedFS(NamedEntityMention.type);
+    int newc=0;
+    while (NEiter.hasNext()) {
+      NamedEntityMention anem=(NamedEntityMention) NEiter.next();
+      System.out.println(anem.getMentionType());
+      newc++;     
+    }    
+    System.out.println(newc);
+    */
+    //JFSIndexRepository repo = aJCas.getJFSIndexRepository();
+    //ArrayList<String> QentityID=new ArrayList<String>();
+    /*FSIterator<TOP> NEiter = repo.getAllIndexedFS(NamedEntityMention.type);
+   
+    
+    while (NEiter.hasNext()) {
+      NamedEntityMention NE=(NamedEntityMention) NEiter.next();
+      if (NE.getEnd()<QABegin[1]) {//in the question
+        QentityID.add(NE.getMentionedEntity().getEntityId());
+        //System.out.println(NE.getMentionedEntity().getEntityId());
+      } else {
+        break;
+      }      
+    }
+    
+    
+    FSIterator<TOP> NEiter = repo.getAllIndexedFS(NamedEntityMention.type);
+    AnsIdx=0;
+    String entityID;
+    while(NEiter.hasNext()){
+      NamedEntityMention NE=(NamedEntityMention) NEiter.next();
+      beginpos=NE.getBegin();
+      endpos=NE.getEnd();
+      entityID=NE.getMentionId();
+      
+      //System.out.println(entityID);
+      if (beginpos>QAEnd[AnsIdx]){ //if the end of the NGram is before the start of the first answer, then the NGram is in question
+        AnsIdx++;
+      }
+      
+      if (AnsIdx<0) {
+        QentityID.add(entityID);
+      }
+      if (AnsIdx>0) {
+        
+        totalNum[AnsIdx-1]++;
+        //totalNum[AnsIdx-1]+=NGAnnotation.getElements().size();
+        //check if the NGram is found in question
+        found=false;
+       
+        for (String s : QentityID) {
+          if (s.equals(entityID)) {found=true;break;}
+        }
+        if (found) {overlapNum[AnsIdx-1]++;}
+        
+        //if (found) {overlapNum[AnsIdx-1]+=NGAnnotation.getElements().size();}
+      }
+      
+    } 
+    */
+    ////////////////////////////////////////////////////////////////////////////
+    
+    
+    
+    
+    
     //calculate scores = overlapNum/totalNum, create AnswerScoreAnnotator
     FSIterator<org.apache.uima.jcas.tcas.Annotation> AnsIterator2 = aJCas.getAnnotationIndex(Answer.type).iterator();
     count=0;
@@ -127,4 +201,5 @@ public class AnswerScoreAnnotator extends JCasAnnotator_ImplBase {
   }
 
 }
+
 

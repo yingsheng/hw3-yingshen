@@ -162,7 +162,13 @@ public class evaluatorCasConsumer extends CasConsumer_ImplBase {
   
   public class ASComparator implements Comparator<AnswerScore> {
     public int compare(AnswerScore r1, AnswerScore r2) {
-      return (int)(-r1.getScore()+r2.getScore());
+      //return (int)(r1.start-r2.start); //increasing
+
+      double diff=-r1.getScore()+r2.getScore();
+      if (diff>0) {return 1;}
+      if (diff==0) {return 0;}
+      return -1;
+
     }
   }
 

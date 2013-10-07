@@ -3,23 +3,20 @@
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
   <primitive>false</primitive>  
   <delegateAnalysisEngineSpecifiers>
-    <delegateAnalysisEngine key="AnswerAnnotatorDescriptor">
-      <import name=".Users.yingsheng.git.hw2-yingshen.hw2-yingshen-ziy-proto.src.main.resources.descriptors.AnswerAnnotatorDescriptor"/>
-    </delegateAnalysisEngine>
     <delegateAnalysisEngine key="QuestionAnnotatorDescriptor">
-      <import name=".Users.yingsheng.git.hw2-yingshen.hw2-yingshen-ziy-proto.src.main.resources.descriptors.QuestionAnnotatorDescriptor"/>
+      <import location="/Users/yingsheng/git/hw3-yingshen/hw3-yingshen-ziy-proto/src/main/resources/descriptors/QuestionAnnotatorDescriptor.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="AnswerAnnotatorDescriptor">
+      <import location="/Users/yingsheng/git/hw3-yingshen/hw3-yingshen-ziy-proto/src/main/resources/descriptors/AnswerAnnotatorDescriptor.xml"/>
     </delegateAnalysisEngine>
   <delegateAnalysisEngine key="TokenAnnotatorDescriptor">
-      <import location="/Users/yingsheng/git/hw2-yingshen/hw2-yingshen-ziy-proto/src/main/resources/descriptors/TokenAnnotatorDescriptor.xml"/>
+      <import location="/Users/yingsheng/git/hw3-yingshen/hw3-yingshen-ziy-proto/src/main/resources/descriptors/TokenAnnotatorDescriptor.xml"/>
     </delegateAnalysisEngine>
   <delegateAnalysisEngine key="NGramAnnotatorDescriptor">
-      <import location="/Users/yingsheng/git/hw2-yingshen/hw2-yingshen-ziy-proto/src/main/resources/descriptors/NGramAnnotatorDescriptor.xml"/>
+      <import location="/Users/yingsheng/git/hw3-yingshen/hw3-yingshen-ziy-proto/src/main/resources/descriptors/NGramAnnotatorDescriptor.xml"/>
     </delegateAnalysisEngine>
   <delegateAnalysisEngine key="AnswerScoreAnnotatorDescriptor">
-      <import location="/Users/yingsheng/git/hw2-yingshen/hw2-yingshen-ziy-proto/src/main/resources/descriptors/AnswerScoreAnnotatorDescriptor.xml"/>
-    </delegateAnalysisEngine>
-  <delegateAnalysisEngine key="evaluatorDescriptor">
-      <import name=".Users.yingsheng.git.hw3-yingshen.hw3-yingshen-ziy-proto.src.main.resources.descriptors.evaluatorDescriptor"/>
+      <import location="/Users/yingsheng/git/hw3-yingshen/hw3-yingshen-ziy-proto/src/main/resources/descriptors/AnswerScoreAnnotatorDescriptor.xml"/>
     </delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>
@@ -36,7 +33,6 @@
       <node>TokenAnnotatorDescriptor</node>
       <node>NGramAnnotatorDescriptor</node>
       <node>AnswerScoreAnnotatorDescriptor</node>
-      <node>evaluatorDescriptor</node>
       </fixedFlow>
     </flowConstraints>
     <fsIndexCollection/>

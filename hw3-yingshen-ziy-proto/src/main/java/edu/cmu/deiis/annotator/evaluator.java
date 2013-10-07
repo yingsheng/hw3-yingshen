@@ -29,7 +29,12 @@ public class evaluator extends JCasAnnotator_ImplBase {
   public class ASComparator implements Comparator<AnswerScore> {
     public int compare(AnswerScore r1, AnswerScore r2) {
       //return (int)(r1.start-r2.start); //increasing
-      return (int)(-r1.getScore()+r2.getScore());
+
+      double diff=-r1.getScore()+r2.getScore();
+      if (diff>0) {return 1;}
+      if (diff==0) {return 0;}
+      return -1;
+
     }
   }
   

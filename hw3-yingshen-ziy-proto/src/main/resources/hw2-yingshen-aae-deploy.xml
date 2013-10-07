@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><analysisEngineDeploymentDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <name>hw2-yingshen-aae-deploy</name>
+  <description/>
+  <version>1.0</version>
+  <vendor/>
+  <deployment protocol="jms" provider="activemq">
+    <casPool numberOfCASes="1" initialFsHeapSize="2000000"/>
+    <service>
+      <inputQueue endpoint="myQueueName" brokerURL="${defaultBrokerURL}" prefetch="0"/>
+      <topDescriptor>
+<import location="/Users/yingsheng/git/hw3-yingshen/hw3-yingshen-ziy-proto/src/main/resources/hw2-yingshen-aae.xml"/>
+      </topDescriptor>
+      <analysisEngine async="false">
+        <scaleout numberOfInstances="1"/>
+        <asyncPrimitiveErrorConfiguration>
+          <processCasErrors thresholdCount="0" thresholdWindow="0" thresholdAction="terminate"/>
+          <collectionProcessCompleteErrors timeout="0" additionalErrorAction="terminate"/>
+        </asyncPrimitiveErrorConfiguration>
+      </analysisEngine>
+    </service>
+  </deployment>
+</analysisEngineDeploymentDescription>
