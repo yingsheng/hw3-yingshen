@@ -1,3 +1,5 @@
+
+
 package edu.cmu.deiis.annotator;
 
 import java.util.ArrayList;
@@ -109,68 +111,44 @@ public class AnswerScoreAnnotator extends JCasAnnotator_ImplBase {
     
     //add the stanford NLP
     
-    /*
+    
     JFSIndexRepository repo = aJCas.getJFSIndexRepository();
-    //ArrayList<String> QentityID=new ArrayList<String>();
     FSIterator<TOP> NEiter = repo.getAllIndexedFS(NamedEntityMention.type);
-    int newc=0;
-    while (NEiter.hasNext()) {
-      NamedEntityMention anem=(NamedEntityMention) NEiter.next();
-      System.out.println(anem.getMentionType());
-      newc++;     
-    }    
-    System.out.println(newc);
-    */
-    //JFSIndexRepository repo = aJCas.getJFSIndexRepository();
-    //ArrayList<String> QentityID=new ArrayList<String>();
-    /*FSIterator<TOP> NEiter = repo.getAllIndexedFS(NamedEntityMention.type);
-   
-    
-    while (NEiter.hasNext()) {
-      NamedEntityMention NE=(NamedEntityMention) NEiter.next();
-      if (NE.getEnd()<QABegin[1]) {//in the question
-        QentityID.add(NE.getMentionedEntity().getEntityId());
-        //System.out.println(NE.getMentionedEntity().getEntityId());
-      } else {
-        break;
-      }      
-    }
-    
-    
-    FSIterator<TOP> NEiter = repo.getAllIndexedFS(NamedEntityMention.type);
+  
+    ArrayList<String> QentityS=new ArrayList<String>(); 
     AnsIdx=0;
-    String entityID;
+    String NEString;
+    
     while(NEiter.hasNext()){
       NamedEntityMention NE=(NamedEntityMention) NEiter.next();
       beginpos=NE.getBegin();
       endpos=NE.getEnd();
-      entityID=NE.getMentionId();
-      
-      //System.out.println(entityID);
+      NEString=NE.getCoveredText();
+
       if (beginpos>QAEnd[AnsIdx]){ //if the end of the NGram is before the start of the first answer, then the NGram is in question
         AnsIdx++;
       }
       
-      if (AnsIdx<0) {
-        QentityID.add(entityID);
+      if (AnsIdx==0) {
+        if (NEString!=null) {QentityS.add(NEString);}       
       }
-      if (AnsIdx>0) {
-        
-        totalNum[AnsIdx-1]++;
-        //totalNum[AnsIdx-1]+=NGAnnotation.getElements().size();
-        //check if the NGram is found in question
-        found=false;
-       
-        for (String s : QentityID) {
-          if (s.equals(entityID)) {found=true;break;}
+      if (AnsIdx>0 && beginpos>=QABegin[AnsIdx]) {
+        if (NEString!=null) {
+          totalNum[AnsIdx-1]++;
+
+          //check if the NGram is found in question
+          found=false;
+         
+          for (String s : QentityS) {
+            if (s.equals(NEString)) {found=true;break;}
+          }
+          if (found) {overlapNum[AnsIdx-1]++;}
         }
-        if (found) {overlapNum[AnsIdx-1]++;}
-        
-        //if (found) {overlapNum[AnsIdx-1]+=NGAnnotation.getElements().size();}
+
       }
       
     } 
-    */
+    
     ////////////////////////////////////////////////////////////////////////////
     
     

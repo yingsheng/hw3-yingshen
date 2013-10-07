@@ -3,13 +3,10 @@
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
   <primitive>false</primitive>  
   <delegateAnalysisEngineSpecifiers>
-    <delegateAnalysisEngine key="QuestionAnnotatorDescriptor">
-      <import location="/Users/yingsheng/git/hw3-yingshen/hw3-yingshen-ziy-proto/src/main/resources/descriptors/QuestionAnnotatorDescriptor.xml"/>
-    </delegateAnalysisEngine>
     <delegateAnalysisEngine key="AnswerAnnotatorDescriptor">
       <import location="/Users/yingsheng/git/hw3-yingshen/hw3-yingshen-ziy-proto/src/main/resources/descriptors/AnswerAnnotatorDescriptor.xml"/>
     </delegateAnalysisEngine>
-  <delegateAnalysisEngine key="TokenAnnotatorDescriptor">
+    <delegateAnalysisEngine key="TokenAnnotatorDescriptor">
       <import location="/Users/yingsheng/git/hw3-yingshen/hw3-yingshen-ziy-proto/src/main/resources/descriptors/TokenAnnotatorDescriptor.xml"/>
     </delegateAnalysisEngine>
   <delegateAnalysisEngine key="NGramAnnotatorDescriptor">
@@ -17,6 +14,9 @@
     </delegateAnalysisEngine>
   <delegateAnalysisEngine key="AnswerScoreAnnotatorDescriptor">
       <import location="/Users/yingsheng/git/hw3-yingshen/hw3-yingshen-ziy-proto/src/main/resources/descriptors/AnswerScoreAnnotatorDescriptor.xml"/>
+    </delegateAnalysisEngine>
+  <delegateAnalysisEngine key="QuestionAnnotatorDescriptor">
+      <import location="/Users/yingsheng/git/hw3-yingshen/hw3-yingshen-ziy-proto/src/main/resources/descriptors/QuestionAnnotatorDescriptor.xml"/>
     </delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>
